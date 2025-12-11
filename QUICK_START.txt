@@ -1,0 +1,65 @@
+================================================================================
+BIRTHDAY SURPRISE WEBSITE - QUICK START (2 MINUTES)
+================================================================================
+
+STEP 1: CREATE DATABASE (1 minute)
+================================================================================
+1. Open: http://localhost/phpmyadmin
+2. Click "New"
+3. Type: birthday_surprise
+4. Click "Create"
+5. Click "SQL" tab
+6. Copy-paste this and click "Go":
+
+CREATE TABLE admin_users (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE photos (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    filename VARCHAR(255) NOT NULL,
+    uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO admin_users (username, password) VALUES 
+('admin', '$2y$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcg7b3XeKeUxWdeS86E36P4/KFm');
+
+STEP 2: TEST THE SETUP (30 seconds)
+================================================================================
+Visit: http://localhost/myfirstweb/test_setup.php
+
+All tests should show ✅ (green)
+
+STEP 3: USE THE WEBSITE (30 seconds)
+================================================================================
+Home Page:     http://localhost/myfirstweb/
+Admin Login:   http://localhost/myfirstweb/admin/login.php
+
+Username: admin
+Password: admin123
+
+DONE! 🎉
+
+================================================================================
+NEXT STEPS
+================================================================================
+
+1. Upload your first photo in Admin Dashboard
+2. View photos in Gallery
+3. Customize birthday name in index.php
+4. Change admin password (see SETUP_GUIDE.md)
+5. Customize colors in assets/css/style.css
+
+================================================================================
+NEED HELP?
+================================================================================
+
+Setup Issues?     → Read SETUP_GUIDE.md
+Features?         → Read FEATURES.md
+Troubleshooting?  → Read TROUBLESHOOTING.md
+Full Docs?        → Read README.md
+
+================================================================================

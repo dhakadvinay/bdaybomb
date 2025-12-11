@@ -1,0 +1,159 @@
+================================================================================
+BIRTHDAY SURPRISE WEBSITE - QUICK INSTALLATION GUIDE
+================================================================================
+
+STEP 1: CREATE DATABASE
+================================================================================
+1. Open phpMyAdmin: http://localhost/phpmyadmin
+2. Click "New" in left sidebar
+3. Enter database name: birthday_surprise
+4. Click "Create"
+5. Select the new database
+6. Go to "SQL" tab
+7. Copy-paste this SQL and click "Go":
+
+---BEGIN SQL---
+CREATE TABLE IF NOT EXISTS admin_users (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS photos (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    filename VARCHAR(255) NOT NULL,
+    uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO admin_users (username, password) VALUES 
+('admin', '$2y$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcg7b3XeKeUxWdeS86E36P4/KFm');
+---END SQL---
+
+STEP 2: VERIFY FILES
+================================================================================
+Make sure all files are in: C:\xampp\htdocs\myfirstweb\
+
+Required files:
+✓ index.php
+✓ gallery.php
+✓ admin/login.php
+✓ admin/dashboard.php
+✓ admin/upload.php
+✓ admin/delete.php
+✓ admin/logout.php
+✓ includes/db.php
+✓ includes/auth.php
+✓ assets/css/style.css
+✓ assets/js/animations.js
+✓ database_schema.sql
+✓ README.md
+✓ SETUP_GUIDE.md
+
+STEP 3: CREATE UPLOADS FOLDER
+================================================================================
+The /uploads/ folder will be created automatically on first photo upload.
+If you want to create it manually:
+1. In C:\xampp\htdocs\myfirstweb\, create a folder named "uploads"
+2. Right-click > Properties > Security > Edit
+3. Select "Users" and check "Full Control"
+4. Click OK
+
+STEP 4: TEST THE SETUP
+================================================================================
+Visit: http://localhost/myfirstweb/test_setup.php
+
+This will verify:
+✓ Database connection
+✓ Database tables
+✓ Uploads folder
+✓ All required files
+
+STEP 5: ACCESS THE WEBSITE
+================================================================================
+Home Page:     http://localhost/myfirstweb/
+Gallery:       http://localhost/myfirstweb/gallery.php
+Admin Login:   http://localhost/myfirstweb/admin/login.php
+
+DEFAULT ADMIN CREDENTIALS:
+Username: admin
+Password: admin123
+
+⚠️ IMPORTANT: Change these credentials after first login!
+
+STEP 6: UPLOAD YOUR FIRST PHOTO
+================================================================================
+1. Go to Admin Login: http://localhost/myfirstweb/admin/login.php
+2. Enter: admin / admin123
+3. Click "Upload New Photo"
+4. Select a JPG or PNG image (max 5MB)
+5. Click "Upload Photo"
+6. View in Gallery: http://localhost/myfirstweb/gallery.php
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+❌ "Connection failed" error
+   → Check XAMPP MySQL is running (green indicator)
+   → Verify database "birthday_surprise" exists
+   → Check includes/db.php has correct credentials
+
+❌ Photos not uploading
+   → Check /uploads/ folder exists and is writable
+   → Verify file size is under 5MB
+   → Ensure file is JPG or PNG
+
+❌ Admin login not working
+   → Clear browser cookies (Ctrl+Shift+Delete)
+   → Verify admin_users table has data
+   → Try default: admin / admin123
+
+❌ Animations not working
+   → Check internet connection (GSAP/Lottie from CDN)
+   → Open browser console (F12) for errors
+   → Clear browser cache (Ctrl+F5)
+
+================================================================================
+CUSTOMIZATION
+================================================================================
+
+Change Birthday Name:
+→ Edit index.php, line 35
+→ Change "Happy Birthday!" to "Happy Birthday [Name]!"
+
+Change Colors:
+→ Edit assets/css/style.css, line 8
+→ Modify gradient colors
+
+Change Admin Password:
+→ Use PHP to generate hash:
+   echo password_hash('newpassword', PASSWORD_DEFAULT);
+→ Update admin_users table in phpMyAdmin
+
+================================================================================
+SECURITY NOTES
+================================================================================
+
+✓ Passwords are hashed with password_hash()
+✓ SQL queries use prepared statements
+✓ File uploads are validated
+✓ Admin panel requires login
+✓ Sessions are used for authentication
+
+⚠️ For production:
+   - Use HTTPS
+   - Change default admin password
+   - Add CSRF tokens
+   - Keep PHP/MySQL updated
+   - Regular database backups
+
+================================================================================
+SUPPORT
+================================================================================
+
+For detailed setup instructions, see: SETUP_GUIDE.md
+For file descriptions, see: README.md
+For testing, visit: http://localhost/myfirstweb/test_setup.php
+
+Happy Birthday! 🎉
